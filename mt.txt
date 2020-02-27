@@ -1,0 +1,244 @@
+[1]
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node *next;
+};
+
+class LinkedList {
+    private:
+        Node *head;
+        int size;
+
+    public:
+        LinkedList(){
+            head = NULL;
+            size = 0;
+        }
+        
+     void pushback(int a){
+            Node *newNode = new Node;
+            newNode->data = a;
+            newNode->next = NULL;
+            
+           if (head == NULL) {
+                head = newNode;
+            }
+      		else{
+                Node *n = head;
+                while (n->next != NULL){
+                    n = n->next;
+                }
+                n->next = newNode;
+            }
+            size++;
+    	}
+
+        void print(){
+            if (size>0){
+                cout << head->data << " ";
+                head = head->next;
+                size--;
+				print();
+            }
+        }
+
+
+        void getSize(){
+    		cout<< size; 
+        }
+};
+
+int main()
+{
+    LinkedList *ll = new LinkedList();
+    ll->pushback(5);
+    ll->pushback(10);
+    ll->pushback(15);
+    ll->pushback(25);
+    ll->print();
+    ll->getSize();
+    return 0;
+}
+
+
+
+
+[2]
+#include <iostream>
+using namespace std;
+
+struct Node{
+  int data;
+  Node *next;
+};
+
+class Stack{
+  private:
+    Node *top;
+    int size;
+
+  public:
+    Stack(){
+      top = NULL;
+      size = 0;
+    }
+    
+  void push(int d){
+    Node *n = new Node;
+    n->data = d;
+    
+    if(top == NULL){
+      top = n;
+      top->next = NULL;
+    }
+    else{
+      n->next = top;
+      top = n;
+    }
+	size++;
+  }
+  
+  void pop(){
+    Node *c = top->next;
+    delete top;
+    top = c;
+    size--;
+  }
+ 
+  void printAll(){
+    while(top != NULL){
+      cout << top->data << endl;
+      top = top->next;
+    }
+  }
+  void getSize(){
+    		cout<< size; 
+        }
+  
+ void removeDuplicates(struct Node *start) 
+{ 
+    struct Node *ptr1, *ptr2, *dup; 
+    ptr1 = start; 
+  
+    while (ptr1 != NULL && ptr1->next != NULL) 
+    { 
+        ptr2 = ptr1; 
+  
+        
+        while (ptr2->next != NULL) 
+        { 
+            if (ptr1->data == ptr2->next->data) 
+            { 
+                dup = ptr2->next; 
+                ptr2->next = ptr2->next->next; 
+                delete(dup); 
+            } 
+            else
+                ptr2 = ptr2->next; 
+        } 
+        ptr1 = ptr1->next; 
+    } 
+} 
+};
+
+int main (){
+  Stack *s = new Stack;
+  s->push(1);
+  s->push(2);
+  s->push(3);
+  s->push(4);
+  s->push(5);
+  Stack *s1 = new Stack;
+  s1->push(2);
+  s1->push(6);
+  s1->push(7);
+  s1->push(4);
+  s1->push(9);
+  s1->push(11);
+  removeDuplicates(&s);
+  s->printAll();
+  
+  
+  return 0;
+}
+
+    
+
+
+
+
+[3]
+#include <iostream>
+using namespace std;
+
+struct Node{
+  int data;
+  Node *next;
+};
+
+class Queue{
+  private:
+    Node *front;
+    int size;
+  public:
+    Queue()
+    {
+      front = NULL;
+    }
+  void push_back(int d)
+  {
+    Node *n = new Node;
+    n->data = d;
+    n->next = NULL;
+    if(front == NULL)
+    {
+      front = n;
+      front->next = NULL;
+    }
+    else
+    {
+      Node *nn = front;
+      while(nn->next != NULL)
+            {
+              nn = nn->next;
+            }
+            nn->next = n;
+    }
+    size++;
+  }
+  void pop_front()
+  {
+    Node *n = front->next;
+    delete front;
+    front = n;
+    size--;
+  }
+  
+  void getSize(){
+    		cout<< size; 
+        }
+ 
+  void printAll(){
+    if (size>0&&front->data%2!=0){
+                cout << front->data << " ";
+                front = front->next;
+                size--;
+				print();
+            }
+};
+
+int main ()
+{
+  Queue *q = new Queue;
+  q->push_back(13);
+  q->push_back(40);
+  q->push_back(46);
+  q->printAll();
+  return 0;
+}
+
+
+[4] all functions have coplexity On;
