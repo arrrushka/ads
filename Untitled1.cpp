@@ -2,7 +2,6 @@
 #define inf 100000
 using namespace std; 
   
-
 void BellmanFord(int graph[][3], int V, int E, int src) { 
    
     int dis[V]; 
@@ -31,15 +30,11 @@ void BellmanFord(int graph[][3], int V, int E, int src) {
         cout << i << "\t\t" << dis[i] << endl; 
 } 
   
-// Driver program to test above functions 
 int main() 
 { 
-    int V = 5; // Number of vertices in graph 
-    int E = 8; // Number of edges in graph 
+    int V = 5; 
+    int E = 8; 
   
-    // Every edge has three values (u, v, w) where 
-    // the edge is from vertex u to v. And weight 
-    // of the edge is w. 
     int graph[][3] = { { 0, 1, -1 }, { 0, 2, 4 }, 
                        { 1, 2, 3 }, { 1, 3, 2 },  
                        { 1, 4, 2 }, { 3, 2, 5 },  
